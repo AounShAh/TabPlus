@@ -23,15 +23,15 @@ below are the images of devlopment phase and vision
 there are the features right now need to added
 
 1.Countdown ✔ \
-2.Tab Save Button  ✔
-3.Tab Delete Button ✔
-4.Tab Icon Save ❌
-5.Countdown on the upper right corner ❌
-6.Weather on the upper left corner ❌
+2.Tab Save Button  ✔ \
+3.Tab Delete Button ✔\
+4.Tab Icon Save ❌\
+5.Countdown on the upper right corner ❌\
+6.Weather on the upper left corner ❌\
 
 
 # Devlopment
 
-To develop this project in local envirment just simply download or clone this project
-then go to this link "about:debugging#/runtime/this-firefox" on firefox
-and then finally click on "Load Temporary Add-on" and select manifest file
+To develop this project in local envirment just simply download or clone this project \
+then go to this link "about:debugging#/runtime/this-firefox" on firefox \
+and then finally click on "Load Temporary Add-on" and select manifest file \
