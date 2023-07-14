@@ -22,7 +22,7 @@ below are the images of devlopment phase and vision
 
 there are the features right now need to added
 
-1.Countdown ✔ \n
+1.Countdown ✔ \
 2.Tab Save Button  ✔
 3.Tab Delete Button ✔
 4.Tab Icon Save ❌
