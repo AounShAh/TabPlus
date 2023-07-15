@@ -52,6 +52,10 @@ there are the features right now need to added
 
 # Devlopment
 
-To develop this project in local envirment just simply download or clone this project \
-then go to this link "about:debugging#/runtime/this-firefox" on firefox \
-and then finally click on "Load Temporary Add-on" and select manifest file 
+It is very easy to develop in your local enviroment , it just takes about 3 steps
+
+ 1.To develop this project in local envirment just simply download or clone this project \
+
+2.then go to this link "about:debugging#/runtime/this-firefox" on firefox \
+
+3.and then finally click on "Load Temporary Add-on" and select manifest file 
