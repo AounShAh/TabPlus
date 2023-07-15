@@ -34,56 +34,126 @@ document.addEventListener("DOMContentLoaded", function() {
     saveButton.addEventListener('click', saveTab);
   
     var deleteButton = document.getElementById('deleteButton');
-    deleteButton.addEventListener('click', deleteAllTabs);
+    deleteButton.addEventListener('dblclick', deleteAllTabs);
   });
   
+
+  let savedTabsArray = [];
+
+  browser.storage.local.get('savedTabs').then(function(result) {
+     let savedTabs = result.savedTabs;
+      console.log('this outside the function', savedTabs);
+      if(savedTabs)
+      {
+        for(let savedTab of savedTabs)
+        {
+          savedTabsArray.push(savedTab);
+        }
+      }
+  });
+
+
+  console.log('this is outside the function savedtabs array', savedTabsArray);
+
   function saveTab() {
     browser.tabs.query({ currentWindow: true, active: true }).then(function(tabs) {
       var tab = tabs[0];
+      console.log('this is happeneing in the tab', tab);
       var tabLink = tab.url;
       var tabTitle = tab.title;
-      retrieveSavedTabs(function(savedTabs) {
-        savedTabs.push({ url: tabLink, title: tabTitle });
-        saveTabsToStorage(savedTabs);
-      });
+      var tabIcon = tab.favIconUrl;
+
+      for(let savedTab of savedTabsArray)
+      {
+        if(savedTab.url == tabLink)
+        {
+          document.write(tabIcon);
+          return;
+        }
+      } 
+
+      savedTabsArray.push({ url: tabLink, title: tabTitle, icon: tabIcon });
+      saveTabsToStorage(savedTabsArray);
+
+
+
+      // retrieveSavedTabs(function(savedTabs) {
+      //   if(savedTabs.include())
+      //   savedTabs.push({ url: tabLink, title: tabTitle });
+      //   saveTabsToStorage(savedTabs);
+      // });
+
+
+
+
     });
   }
   
-  function saveTabsToStorage(savedTabs) {
-    browser.storage.local.set({ savedTabs: savedTabs }).then(function() {
-      console.log('Tabs saved:', savedTabs);
+  function saveTabsToStorage(savedTabsArray) {
+    browser.storage.local.set({ savedTabs: savedTabsArray }).then(function() {
+      console.log('Tabs saved:', savedTabsArray);
     });
   }
   
-  function retrieveSavedTabs(callback) {
-    browser.storage.local.get('savedTabs').then(function(result) {
-      var savedTabs = result.savedTabs;
-      if (savedTabs) {
-        callback(savedTabs);
-      } else {
-        callback([]);
-      }
-    });
-  }
+  // function retrieveSavedTabs(callback) {
+  //   browser.storage.local.get('savedTabs').then(function(result) {
+  //     var savedTabs = result.savedTabs;
+  //     if (savedTabs) {
+  //       callback(savedTabs);
+  //     } else {
+  //       callback([]);
+  //     }
+  //   });
+  // }
   
   function restoreTabsFromStorage() {
-    retrieveSavedTabs(function(savedTabs) {
+
+
+    let savedTabs;
+
+    browser.storage.local.get('savedTabs').then(function(result) {
+      console.log(result);
+      savedTabs = result.savedTabs;
+      console.log(savedTabs);
       if (savedTabs.length > 0) {
-        console.log('Restored tabs:');
-        savedTabs.forEach(function(tab) {
-          console.log('Title:', tab.title);
-          console.log('URL:', tab.url);
-          document.getElementById('savedLinks').innerHTML +=
-          `<a class="link" href="${tab.url}">
-            <div class="icon"></div>
-            <p class="name-of-site">${tab.title.slice(0,11)}</p>
-          </a>
-          `
-        });
-      } else {
-        console.log('No saved tabs found.');
-      }
+            console.log('Restored tabs:');
+            savedTabs.forEach(function(tab) {
+              console.log('Title:', tab.title);
+              console.log('URL:', tab.url);
+              console.log('icon:', tab.icon);
+              document.getElementById('savedLinks').innerHTML +=
+              `<a class="link" href="${tab.url}">
+                <div class="icon" style="background-image:url(${tab.icon})"></div>
+                <p class="name-of-site">${tab.title.slice(0,11)}</p>
+              </a>
+              `
+            });
+          } else {
+            console.log('No saved tabs found.');
+          }
     });
+
+    // console.log(savedTabs);
+
+
+    // retrieveSavedTabs(function(savedTabs) {
+    //   if (savedTabs.length > 0) {
+    //     console.log(savedTabs);
+    //     console.log('Restored tabs:');
+    //     savedTabs.forEach(function(tab) {
+    //       console.log('Title:', tab.title);
+    //       console.log('URL:', tab.url);
+    //       document.getElementById('savedLinks').innerHTML +=
+    //       `<a class="link" href="${tab.url}">
+    //         <div class="icon"></div>
+    //         <p class="name-of-site">${tab.title.slice(0,11)}</p>
+    //       </a>
+    //       `
+    //     });
+    //   } else {
+    //     console.log('No saved tabs found.');
+    //   }
+    // });
   }
   
   function deleteAllTabs() {
