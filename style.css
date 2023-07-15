@@ -50,6 +50,7 @@ body {
     box-sizing: border-box;
     margin-bottom: 10px;
     outline: 1px solid whitesmoke;
+    height: 100%;
 }
 
 
@@ -59,10 +60,10 @@ body {
     width: 50%;
     height: 60%;
     margin: 0 auto;
-    background-image: url('whatsapp-icon.png');
+    /* background-image: url('whatsapp-icon.png'); */
     background-position: center;
     background-size: cover;
-    background-color:whitesmoke;
+    /* background-color:whitesmoke; */
 }
 
 
