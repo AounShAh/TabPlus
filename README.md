@@ -5,7 +5,8 @@ This extention/Add-on is for firefox focused currently.
 
 Our moto is "The only tab you need"
 
-v0.0.1
+~~v0.0.1~~ \
+v1.0 (Date 9 August 2023)
 
 # Vision
 
