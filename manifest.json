@@ -1,18 +1,14 @@
 {
   "manifest_version": 2,
   "name": "The Tab Extension",
-  "version": "0.0.5",
+  "version": "1.0",
   "description": "The only tab you will ever need",
   "browser_action": {
-    "default_title": "The Tab Extension",
+    "default_title": "Customize The Tab",
     "default_popup": "popup.html"
   },
   "chrome_url_overrides": {
     "newtab": "index.html"
   },  
-  "permissions": ["activeTab", "tabs" , "storage"],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  }
+  "permissions": ["activeTab", "tabs" , "storage"]
 }

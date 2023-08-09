@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Countdown Extension</title>
+  <title>New Tab</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="countdown"></div>
-  
+  <div class="container">
+    
+    <div class="weather-container" id="weatherContainer">
+      
+    </div>
 
-  <div id="savedLinks" class="link-container">
-      <a class="link" href="#">
-          <div class="icon"></div>
-          <p class="name-of-site">Test</p>
-      </a>
+    <div class="countdown-display" id="countdownContainer">
+      <label><input type="date" id="calender">Select the date</label>
+      <button id="countdownStartBtn">Start The Countdown</button>
+    </div>
+
+
+    <div id="savedLinks" class="link-container">
+    </div>
+
+    </div>
   </div>
-
-
-
 </body>
-<script src="popup.js"></script>
+<script src="index.js"></script>
 </html>
